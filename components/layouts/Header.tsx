@@ -60,10 +60,11 @@ interface Props {
    * You won't need it on your project.
    */
   window?: () => Window;
+  isSidemenuOpen: boolean;
+  setIsSidemenuOpen: Function;
 }
 
-export default function ResponsiveDrawer(props: Props) {
-  const { window } = props;
+const ResponsiveDrawer: React.FC<Props> = ({window, isSidemenuOpen, children}) => {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -99,27 +100,31 @@ export default function ResponsiveDrawer(props: Props) {
     </div>
   );
 
+  const header = (
+    <AppBar position="fixed" className={classes.appBar}>
+      <Toolbar>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="start"
+          onClick={handleDrawerToggle}
+          className={classes.menuButton}
+        >
+          <MenuIcon />
+        </IconButton>
+        <Typography variant="h6" noWrap>
+          Responsive drawer
+        </Typography>
+      </Toolbar>
+    </AppBar>
+  )
+
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            Responsive drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      {header}
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
@@ -153,7 +158,11 @@ export default function ResponsiveDrawer(props: Props) {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
+        {children}
       </main>
     </div>
   );
 }
+
+
+export default ResponsiveDrawer;
