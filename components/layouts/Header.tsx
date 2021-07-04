@@ -60,11 +60,9 @@ interface Props {
    * You won't need it on your project.
    */
   window?: () => Window;
-  isSidemenuOpen: boolean;
-  setIsSidemenuOpen: Function;
 }
 
-const ResponsiveDrawer: React.FC<Props> = ({window, isSidemenuOpen, children}) => {
+const ResponsiveDrawer: React.FC<Props> = ({window, children}) => {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -75,10 +73,10 @@ const ResponsiveDrawer: React.FC<Props> = ({window, isSidemenuOpen, children}) =
 
   const linkInfoList: {pageName: string, url: string}[] = [
     {pageName: 'simple axios', url: '/simple_axios'},
-    {pageName: '', url: ''},
-    {pageName: '', url: ''},
-    {pageName: '', url: ''},
-    {pageName: '', url: ''},
+    {pageName: 'redux', url: '/redux'},
+    {pageName: 'aaa', url: '/aaa'},
+    {pageName: 'bbb', url: '/bbb'},
+    {pageName: 'ccc', url: '/ccc'},
   ]
 
   const drawer = (
@@ -88,12 +86,10 @@ const ResponsiveDrawer: React.FC<Props> = ({window, isSidemenuOpen, children}) =
       <List>
         {linkInfoList.map((linkInfo, index) => (
           <Link href={linkInfo.url} key={linkInfo.pageName + index}>
-            <a>
-              <ListItem button key={linkInfo.pageName}>
-                <ListItemIcon><InboxIcon /></ListItemIcon>
-                <ListItemText primary={linkInfo.pageName} />
-              </ListItem>
-            </a>
+            <ListItem button key={linkInfo.pageName}>
+              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemText primary={linkInfo.pageName} />
+            </ListItem>
           </Link>
         ))}
       </List>
