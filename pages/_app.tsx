@@ -4,7 +4,6 @@ import React, { useState } from 'react'
 import Header from '../components/layouts/Header'
 import Footer from '../components/layouts/Footer'
 import {MuiThemeProvider} from '@material-ui/core/styles'
-import {theme} from './theme'
 
 function MyApp({ Component, pageProps }: AppProps) {
     // 以下を追加する
@@ -23,9 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <MuiThemeProvider theme={theme}>
         <Component {...pageProps} />
-      </ MuiThemeProvider>
     </>
   )
 }
