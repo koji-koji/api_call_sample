@@ -1,28 +1,29 @@
-import React, { useState, useEffect } from "react"
-import CodeDescriptionArea from "../../components/layouts/CodeDescriptionArea";
-import Footer from "../../components/layouts/Footer";
-import Header from "../../components/layouts/Header";
-import OverviewDescriptionArea from "../../components/layouts/OverviewDescriptionArea";
-import SampleComponentStructureArea from "../../components/layouts/SampleComponentStructureArea";
-import { fetchSamples, Sample } from "../../services/api/SampleAxiosApi";
+import React, { useState, useEffect } from 'react'
+import CodeDescriptionArea from '../../components/layouts/CodeDescriptionArea'
+import Footer from '../../components/layouts/Footer'
+import Header from '../../components/layouts/Header'
+import OverviewDescriptionArea from '../../components/layouts/OverviewDescriptionArea'
+import SampleComponentStructureArea from '../../components/layouts/SampleComponentStructureArea'
+import { fetchSamples, Sample } from '../../services/api/SampleAxiosApi'
 
 const SimpleAxiosPage: React.FC = () => {
   const [sample, setSample] = useState<Sample>({})
 
   useEffect(() => {
-    (async () => {
-      const response = await fetchSamples({})
-      setSample(response ?? {})
-    })();
+    ;(async () => {
+      // TODO: api側を実装後にコメントアウト解除。
+      // const response = await fetchSamples({})
+      // setSample(response ?? {})
+    })()
   }, [])
 
   return (
     <>
       <Header>
         <section>
-          <OverviewDescriptionArea 
+          <OverviewDescriptionArea
             title="simple axios"
-            descriptionComponent="testtesttesttesttesttesttesttesttesttest" 
+            descriptionComponent="testtesttesttesttesttesttesttesttesttest"
           />
         </section>
         {sample}
@@ -33,9 +34,9 @@ const SimpleAxiosPage: React.FC = () => {
           <SampleComponentStructureArea />
         </section>
         <Footer />
-      </ Header>
+      </Header>
     </>
   )
 }
 
-export default SimpleAxiosPage;
+export default SimpleAxiosPage
