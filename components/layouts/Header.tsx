@@ -1,23 +1,27 @@
-import React from 'react';
-import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Divider from '@material-ui/core/Divider';
-import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
-import IconButton from '@material-ui/core/IconButton';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
-import MenuIcon from '@material-ui/icons/Menu';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
-import { Link } from '@material-ui/core';
+import React from 'react'
+import AppBar from '@material-ui/core/AppBar'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import Divider from '@material-ui/core/Divider'
+import Drawer from '@material-ui/core/Drawer'
+import Hidden from '@material-ui/core/Hidden'
+import IconButton from '@material-ui/core/IconButton'
+import InboxIcon from '@material-ui/icons/MoveToInbox'
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
+import MenuIcon from '@material-ui/icons/Menu'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import {
+  makeStyles,
+  useTheme,
+  Theme,
+  createStyles,
+} from '@material-ui/core/styles'
+import { Link } from '@material-ui/core'
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -51,32 +55,32 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       padding: theme.spacing(3),
     },
-  }),
-);
+  })
+)
 
 interface Props {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
    */
-  window?: () => Window;
+  window?: () => Window
 }
 
-const ResponsiveDrawer: React.FC<Props> = ({window, children}) => {
-  const classes = useStyles();
-  const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+const ResponsiveDrawer: React.FC<Props> = ({ window, children }) => {
+  const classes = useStyles()
+  const theme = useTheme()
+  const [mobileOpen, setMobileOpen] = React.useState(false)
 
   const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
+    setMobileOpen(!mobileOpen)
+  }
 
-  const linkInfoList: {pageName: string, url: string}[] = [
-    {pageName: 'simple axios', url: '/simple_axios'},
-    {pageName: 'redux', url: '/redux'},
-    {pageName: 'aaa', url: '/aaa'},
-    {pageName: 'bbb', url: '/bbb'},
-    {pageName: 'ccc', url: '/ccc'},
+  const linkInfoList: { pageName: string; url: string }[] = [
+    { pageName: 'simple axios', url: '/simple_axios' },
+    { pageName: 'redux', url: '/redux' },
+    { pageName: 'aaa', url: '/aaa' },
+    { pageName: 'bbb', url: '/bbb' },
+    { pageName: 'ccc', url: '/ccc' },
   ]
 
   const drawer = (
@@ -87,14 +91,16 @@ const ResponsiveDrawer: React.FC<Props> = ({window, children}) => {
         {linkInfoList.map((linkInfo, index) => (
           <Link href={linkInfo.url} key={linkInfo.pageName + index}>
             <ListItem button key={linkInfo.pageName}>
-              <ListItemIcon><InboxIcon /></ListItemIcon>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
               <ListItemText primary={linkInfo.pageName} />
             </ListItem>
           </Link>
         ))}
       </List>
     </div>
-  );
+  )
 
   const header = (
     <AppBar position="fixed" className={classes.appBar}>
@@ -115,7 +121,8 @@ const ResponsiveDrawer: React.FC<Props> = ({window, children}) => {
     </AppBar>
   )
 
-  const container = window !== undefined ? () => window().document.body : undefined;
+  const container =
+    window !== undefined ? () => window().document.body : undefined
 
   return (
     <div className={classes.root}>
@@ -157,8 +164,7 @@ const ResponsiveDrawer: React.FC<Props> = ({window, children}) => {
         {children}
       </main>
     </div>
-  );
+  )
 }
 
-
-export default ResponsiveDrawer;
+export default ResponsiveDrawer

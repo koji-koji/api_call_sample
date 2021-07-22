@@ -1,12 +1,13 @@
-import React from "react"
+import React from 'react'
 
 interface Props {
   sample?: string
 }
 
-const SampleComponentStructureArea: React.FC<Props> = ({sample}) => {
+const SampleComponentStructureArea: React.FC<Props> = ({ sample }) => {
   return (
     <>
+      {sample}
       SampleComponentStructureArea
     </>
   )
