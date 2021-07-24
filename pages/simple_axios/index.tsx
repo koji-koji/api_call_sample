@@ -4,10 +4,10 @@ import Footer from '../../components/layouts/Footer'
 import Header from '../../components/layouts/Header'
 import OverviewDescriptionArea from '../../components/layouts/OverviewDescriptionArea'
 import SampleComponentStructureArea from '../../components/layouts/SampleComponentStructureArea'
-import { fetchSamples, Sample } from '../../services/api/SampleAxiosApi'
+import { Sample } from '../../services/api/SampleAxiosApi'
 
 const SimpleAxiosPage: React.FC = () => {
-  const [sample, setSample] = useState<Sample>({})
+  const [sample] = useState<Sample>({})
 
   useEffect(() => {
     ;(async () => {
