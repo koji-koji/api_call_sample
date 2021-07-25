@@ -8,6 +8,7 @@ import { Sample } from '../../services/api/SampleAxiosApi'
 
 const SimpleAxiosPage: React.FC = () => {
   const [sample] = useState<Sample>({})
+  console.log(sample)
 
   useEffect(() => {
     ;(async () => {
@@ -26,7 +27,6 @@ const SimpleAxiosPage: React.FC = () => {
             descriptionComponent="testtesttesttesttesttesttesttesttesttest"
           />
         </section>
-        {sample}
         <section>
           <CodeDescriptionArea />
         </section>
